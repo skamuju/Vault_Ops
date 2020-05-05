@@ -1,5 +1,5 @@
-import pymongo
 from pymongo import MongoClient
+
 from backend.ASIN import tech_features, tech_info
 
 client = MongoClient("mongodb+srv://s_kamuju:teamfreeze@ssf-kdqtj.mongodb.net/test?retryWrites=true&w=majority")

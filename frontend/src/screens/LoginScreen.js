@@ -14,7 +14,7 @@ export default class LoginScreen extends Component {
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
-            source={require("../images/vaultlogo.png")}
+            source={require("../images/vaultopslogo.png")}
           />
           <Text style={styles.title}>VAULT OPS</Text>
         </View>

@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
-from backend.ASIN import tech_dict, information_amazon
-
 app = Flask(__name__)
+
+@app.route('/', methods=['GET'])
+def hello():
+    return "hello world!"
 
 
 @app.route('/signup', methods=['POST'])
@@ -18,19 +20,17 @@ def signup():
     collection.insert_one(post)
     return jsonify({"success": True})
 
-
-@app.route('/addDevice', methods=['POST'])
-def device():
+@app.route('/addProduct', methods=['POST'])
+def addProduct():
     data = request.get_json()
     client = MongoClient("mongodb+srv://s_kamuju:teamfreeze@ssf-kdqtj.mongodb.net/test?retryWrites=true&w=majority")
     db = client['Vault_Ops']
     collection = db['user_products']
-    ASIN = tech_dict[data["name"]]
-    url = "http://www.amazon.com/dp/" + ASIN
-    tech_info,tech_features = information_amazon(url)
-    post = {'name': tech_info[0], 'availability': tech_info[1], 'price': tech_info[2]}
+
+    post = {'product name': data['product name'], 'lifespan':data['product lifespan']}
 
     collection.insert_one(post)
     return jsonify({"success": True})
 
 app.run()
+

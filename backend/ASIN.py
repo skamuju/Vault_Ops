@@ -2,6 +2,8 @@ from lxml import html
 import requests
 from time import sleep
 
+
+
 tech_dict = {"macbook air": "B0863D4XJW", "iphone 11 pro": "B07XSRMKHY", "xbox one x + battlefield 5" : "B07GL526BQ", "fitbit versa 2" : "B07TWFVDWT", "airpods pro": "B07ZPC9QD4",
              "samsung galaxy s20": "B082XY23D5", "surface pro 4": "B01606NQ62", "amazon alexa echo": "B07NFTVP7P", "kindle paperwhite": "B07PS737QQ", "apple magicmouse": "B016QO5YNG",
              "mophie product red charging phone case": "B07R6NK9SV", "airpods": "B07PXGQC1Q", "apple tv": "B075NHCSS4", "powerbeats pro": "B07WBTX9FH", "jbl flip 5": "B07QK2SPP7", "acer chromebook r11":"B086N1HBDH"}
@@ -55,7 +57,7 @@ def information_amazon(f_url):
         print(DESCRIPTION)
         count += 1
         sleep(1)
-
+    return tech_info,tech_features
 def readasin():
 
     print("VAULT OPS \n")

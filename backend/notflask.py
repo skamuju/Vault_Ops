@@ -23,11 +23,9 @@ def login():
     db = client['Vault_Ops']
     collection = db['users']
     post = {'username': data["username"],'password': data["password"]}
-    if post['username'] and post['password']in collection.find():
-        return jsonify({"success": True})
-    else:
-        return ('Sorry, you are not registered in our user database')
-
+    items = []
+    items.append(db.collection.find({"password": 1234}))
+    return jsonify({"items": items})
 
 @app.route('/addProduct', methods=['POST'])
 def addProduct():

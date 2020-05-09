@@ -2,10 +2,6 @@ from flask import Flask, jsonify, request
 from pymongo import MongoClient
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def hello():
-    return "hello world!"
-
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -27,10 +23,22 @@ def addProduct():
     db = client['Vault_Ops']
     collection = db['user_products']
 
-    post = {'product name': data['product name'], 'lifespan':data['product lifespan']}
-
+    post = {'name': data['name'], 'lifespan':data['lifespan']}
+ 
     collection.insert_one(post)
     return jsonify({"success": True})
 
+@app.route('/getProduct', methods=['GET'])
+def getProduct():
+    client = MongoClient("mongodb+srv://s_kamuju:teamfreeze@ssf-kdqtj.mongodb.net/test?retryWrites=true&w=majority")
+    db = client['Vault_Ops']
+    collection = db['user_products']  
+    items = []
+    for doc in collection.find({}):
+        del doc["_id"]
+        items.append(doc)
+    return jsonify({ "data": items })
+
 app.run()
+
 

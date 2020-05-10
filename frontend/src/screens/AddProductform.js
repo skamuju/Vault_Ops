@@ -9,6 +9,9 @@ import {
 } from "react-native";
 
 export default class AppProductform extends Component {
+  dashnav = () => {
+    this.props.navigation.navigate("Dash");
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -38,7 +41,7 @@ export default class AppProductform extends Component {
           autoCorrect={false}
           style={styles.input}
         />
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.dashnav}>
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
       </View>

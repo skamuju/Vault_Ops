@@ -6,7 +6,10 @@ import {
   KeyboardAvoidingView,
   Image
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import AddProductform from "./AddProductform";
+
 export default class AddProduct extends Component {
   render() {
     return (
@@ -20,29 +23,28 @@ export default class AddProduct extends Component {
         <View style={styles.wordContainer}>
           <Text style={styles.title}>Add Device</Text>
         </View>
-
         <View style={styles.formContainer}>
-          <AddProductform />
+          <AddProductform navigation={this.props.navigation} />
         </View>
       </KeyboardAvoidingView>
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#2c3e50"
   },
   logoContainer: {
-    alignItems: "flex-end",
+    alignItems: "center",
     flexGrow: 1
   },
   logo: {
-    width: 75,
-    height: 75
+    width: 300,
+    height: 300
   },
   wordContainer: {
-    position: "absolute",
     alignItems: "center",
     justifyContent: "center",
     flexGrow: 1

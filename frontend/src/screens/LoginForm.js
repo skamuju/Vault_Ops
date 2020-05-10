@@ -9,14 +9,26 @@ import {
 } from "react-native";
 
 export default class LoginForm extends Component {
+  signup = () => {
+    this.props.navigation.navigate("Add");
+  };
   render() {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <TextInput
+          placeholder="Full Name"
+          placeholderTextColor="rgba(255,255,255,0.7)"
+          returnKeyType="next"
+          onSubmitEditing={() => this.emailInput.focus()}
+          autoCorrect={false}
+          style={styles.input}
+        />
+        <TextInput
           placeholder="Username or Email"
           placeholderTextColor="rgba(255,255,255,0.7)"
           returnKeyType="next"
+          ref={input => (this.emailInput = input)}
           onSubmitEditing={() => this.passwordInput.focus()}
           keyboardType="email-address"
           autoCapitalize="none"
@@ -26,21 +38,32 @@ export default class LoginForm extends Component {
         <TextInput
           placeholder="Password"
           placeholderTextColor="rgba(255,255,255,0.7)"
-          returnKeyType="go"
+          returnKeyType="next"
           secureTextEntry
           style={styles.input}
           ref={input => (this.passwordInput = input)}
+          onSubmitEditing={() => this.confirmpasswordInput.focus()}
         />
-        <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText}>Login</Text>
+        <TextInput
+          placeholder="Confirm Password"
+          placeholderTextColor="rgba(255,255,255,0.7)"
+          returnKeyType="go"
+          secureTextEntry
+          style={styles.input}
+          ref={input => (this.confirmpasswordInput = input)}
+        />
+
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.signup}>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
-    padding: 50
+    padding: 30
   },
   input: {
     height: 40,

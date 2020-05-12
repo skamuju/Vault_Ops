@@ -57,7 +57,7 @@ def getProduct():
     #collection = db['user_products']
     #return str(collection.count())
 
-app.run()
+app.run(host="0.0.0.0")
 
 
   

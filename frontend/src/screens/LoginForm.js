@@ -9,7 +9,21 @@ import {
 } from "react-native";
 
 export default class LoginForm extends Component {
+  state = {
+    username: "",
+    email: "",
+    password: "",
+    confirmpassword: ""
+  };
   signup = () => {
+    fetch("http://10.0.0.16:5000", {
+      method: "POST",
+      body: {
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      }
+    }).then(res => console.warn(res));
     this.props.navigation.navigate("Dash");
   };
   render() {
@@ -21,6 +35,8 @@ export default class LoginForm extends Component {
           placeholderTextColor="rgba(255,255,255,0.7)"
           returnKeyType="next"
           onSubmitEditing={() => this.emailInput.focus()}
+          value={this.state.username}
+          onChangeText={text => this.setState({ username: text })}
           autoCorrect={false}
           style={styles.input}
         />
@@ -29,6 +45,8 @@ export default class LoginForm extends Component {
           placeholderTextColor="rgba(255,255,255,0.7)"
           returnKeyType="next"
           ref={input => (this.emailInput = input)}
+          value={this.state.email}
+          onChangeText={text => this.setState({ email: text })}
           onSubmitEditing={() => this.passwordInput.focus()}
           keyboardType="email-address"
           autoCapitalize="none"
@@ -42,6 +60,8 @@ export default class LoginForm extends Component {
           secureTextEntry
           style={styles.input}
           ref={input => (this.passwordInput = input)}
+          value={this.state.password}
+          onChangeText={text => this.setState({ password: text })}
           onSubmitEditing={() => this.confirmpasswordInput.focus()}
         />
         <TextInput
@@ -51,6 +71,8 @@ export default class LoginForm extends Component {
           secureTextEntry
           style={styles.input}
           ref={input => (this.confirmpasswordInput = input)}
+          value={this.state.confirmpassword}
+          onChangeText={text => this.setState({ confirmpassword: text })}
         />
 
         <TouchableOpacity style={styles.buttonContainer} onPress={this.signup}>

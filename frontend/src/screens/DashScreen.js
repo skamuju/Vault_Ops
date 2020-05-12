@@ -9,12 +9,19 @@ import {
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import DashScreenform from "./DashScreenform";
 export default class DashScreen extends Component {
   render() {
     return (
-      <View>
-        <Text>Dashboard</Text>
+      <View style={styles.formContainer}>
+        <DashScreenform navigation={this.props.navigation} />
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#2980b9"
+  }
+});

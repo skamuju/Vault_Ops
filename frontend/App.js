@@ -8,6 +8,7 @@ import LoginForm from "./src/screens/LoginForm";
 import AddProduct from "./src/screens/AddProduct";
 import AddProductform from "./src/screens/AddProductform";
 import DashScreen from "./src/screens/DashScreen";
+import DashScreenform from "./src/screens/DashScreenform";
 
 const Stack = createStackNavigator();
 

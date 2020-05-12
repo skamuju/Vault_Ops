@@ -10,7 +10,7 @@ import {
 
 export default class LoginForm extends Component {
   signup = () => {
-    this.props.navigation.navigate("Add");
+    this.props.navigation.navigate("Dash");
   };
   render() {
     return (

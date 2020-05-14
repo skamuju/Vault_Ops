@@ -1,17 +1,18 @@
 from flask import Flask, jsonify, request
-from pymongo import MongoClient
+from pymongo import MongoClient, operations
 app = Flask(__name__)
 
 
-@app.route('/signup', methods=['POST'])
-def signup():
+
+@app.route('/register', methods=['POST'])
+def register():
     data = request.get_json()
     client = MongoClient("mongodb+srv://s_kamuju:teamfreeze@ssf-kdqtj.mongodb.net/test?retryWrites=true&w=majority")
     db = client['Vault_Ops']
     collection = db['users']
 
     post = {'username': data["username"], 'email': data["email"],
-            'password': data["password"], 'devices': []}
+            'password': data["password"], 'devices': [], "traffic": 1}
 
     collection.insert_one(post)
     return jsonify({"success": True})
@@ -23,8 +24,10 @@ def login():
     db = client['Vault_Ops']
     collection = db['users']
     post = {'username': data["username"],'password': data["password"]}
+    newvalues = { "traffic": "2"}
     if collection.find_one(post): 
         return jsonify({"success": True})
+        collection.update_one({"traffic": 1}, $set: {"traffic": 2})
     else:
         return jsonify({"success": False})
 

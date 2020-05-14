@@ -24,10 +24,9 @@ def login():
     db = client['Vault_Ops']
     collection = db['users']
     post = {'username': data["username"],'password': data["password"]}
-    newvalues = { "traffic": "2"}
     if collection.find_one(post): 
         return jsonify({"success": True})
-        collection.update_one({"traffic": 1}, $set: {"traffic": 2})
+        collection.update_one({"traffic": 1}, {set: {"traffic": 2}})
     else:
         return jsonify({"success": False})
 
@@ -52,6 +51,17 @@ def getProduct():
             items.append(doc)
     items.reverse()
     return jsonify({ "data": items})
+
+@app.route('/productAge', methods=['GET'])
+def productAge():
+    client = MongoClient("mongodb+srv://s_kamuju:teamfreeze@ssf-kdqtj.mongodb.net/test?retryWrites=true&w=majority")
+    db = client['Vault_Ops']
+    collection = db['user_products']
+    items = []
+    for x in collection.find({},{'lifespan': 2 }):
+        del x['_id']
+        items.append(x)
+    return jsonify({"products": items}) 
 
 #@app.route('/countdb', methods=['GET'])
 #def countdb():

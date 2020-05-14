@@ -3,14 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  KeyboardAvoidingView,
-  Image
+  Image,
+  KeyboardAvoidingView
 } from "react-native";
-import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import DashScreenform from "./DashScreenform";
-export default class DashScreen extends Component {
+import UpgradeScreenform from "./UpgradeScreenform";
+export default class UpgradeScreen extends Component {
   render() {
     return (
       <View
@@ -18,9 +17,9 @@ export default class DashScreen extends Component {
         behavior="padding"
         style={styles.container}
       >
-        <Text style={styles.title}>Dashboard</Text>
+        <Text style={styles.title}>Upgrades</Text>
 
-        <DashScreenform navigation={this.props.navigation} />
+        <UpgradeScreenform navigation={this.props.navigation} />
       </View>
     );
   }

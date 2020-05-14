@@ -16,6 +16,14 @@ export default class LoginForm extends Component {
     confirmpassword: ""
   };
   signup = () => {
+    fetch("http://10.0.0.16:5000", {
+      method: "POST",
+      body: {
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      }
+    }).then(res => console.warn(res));
     this.props.navigation.navigate("Dash");
   };
   render() {

@@ -14,6 +14,11 @@ export default class UpgradeScreenform extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.welcome}>Mackbook{"\n"}2014</Text>
+        <Text style={styles.welcome}>
+          Mackbook air{"\n"}
+          2019{"\n"}best price:target 300$
+        </Text>
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={this.dashnavigate}
@@ -25,6 +30,20 @@ export default class UpgradeScreenform extends Component {
   }
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 20,
+    backgroundColor: "#2c3e50"
+  },
+  welcome: {
+    flex: 1,
+    margin: 20,
+    backgroundColor: "rgba(255,255,255,0.2)",
+    margin: 10,
+    textAlign: "center",
+    fontSize: 20,
+    paddingTop: 70
+  },
   buttonContainer: {
     backgroundColor: "#2980b9",
     paddingVertical: 15

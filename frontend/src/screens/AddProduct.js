@@ -24,7 +24,10 @@ export default class AddProduct extends Component {
           <Text style={styles.title}>Add Device</Text>
         </View>
         <View style={styles.formContainer}>
-          <AddProductform navigation={this.props.navigation} />
+          <AddProductform
+            navigation={this.props.navigation}
+            route={this.props.route}
+          />
         </View>
       </KeyboardAvoidingView>
     );

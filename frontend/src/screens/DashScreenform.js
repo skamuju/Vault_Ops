@@ -8,6 +8,13 @@ import {
   StatusBar
 } from "react-native";
 export default class DashScreenform extends Component {
+  state = {
+    devices: [
+      { name: "airpods", lifespan: "2", price: "300$" },
+      { name: "airphone", lifespan: "7", price: "300$" },
+      { name: "airmac", lifespan: "5", price: "300$" }
+    ]
+  };
   addprod = () => {
     this.props.navigation.navigate("Add");
   };
@@ -17,10 +24,15 @@ export default class DashScreenform extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Product 1{"\n"}
-          When device was bought{"\n"}price it was bought for
-        </Text>
+        {this.state.devices.map(device => (
+          <Text style={styles.welcome}>
+            {device.name}
+            {"\n"}
+            {device.lifespan + " years"}
+            {"\n"}
+            {device.price}
+          </Text>
+        ))}
         <Text style={styles.welcome}>
           Product 2{"\n"}
           When device was bought{"\n"}price it was bought for
@@ -32,7 +44,10 @@ export default class DashScreenform extends Component {
         <TouchableOpacity style={styles.buttonContainer} onPress={this.addprod}>
           <Text style={styles.buttonText}>Add a Product</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonContainer} onPress={this.upgradeprod}>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={this.upgradeprod}
+        >
           <Text style={styles.buttonText}>Upgrade </Text>
         </TouchableOpacity>
       </View>

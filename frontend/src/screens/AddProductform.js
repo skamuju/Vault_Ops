@@ -9,6 +9,11 @@ import {
 } from "react-native";
 
 export default class AppProductform extends Component {
+  state = {
+    devicename: "",
+    devicebought: "",
+    pricebought: ""
+  };
   dashnav = () => {
     this.props.navigation.navigate("Dash");
   };
@@ -21,6 +26,8 @@ export default class AppProductform extends Component {
           placeholderTextColor="rgba(255,255,255,0.7)"
           returnKeyType="next"
           onSubmitEditing={() => this.navigationInput.focus()}
+          value={this.state.devicename}
+          onChangeText={text => this.setState({ devicename: text })}
           autoCorrect={false}
           style={styles.input}
         />
@@ -30,6 +37,8 @@ export default class AppProductform extends Component {
           returnKeyType="next"
           ref={input => (this.navigationInput = input)}
           onSubmitEditing={() => this.navtwoInput.focus()}
+          value={this.state.devicebought}
+          onChangeText={text => this.setState({ devicebought: text })}
           autoCorrect={false}
           style={styles.input}
         />
@@ -38,6 +47,8 @@ export default class AppProductform extends Component {
           placeholderTextColor="rgba(255,255,255,0.7)"
           returnKeyType="go"
           ref={input => (this.navtwoInput = input)}
+          value={this.state.pricebought}
+          onChangeText={text => this.setState({ pricebought: text })}
           autoCorrect={false}
           style={styles.input}
         />

@@ -13,11 +13,7 @@ import DashScreenform from "./DashScreenform";
 export default class DashScreen extends Component {
   render() {
     return (
-      <View
-        style={styles.formContainer}
-        behavior="padding"
-        style={styles.container}
-      >
+      <View behavior="padding" style={styles.container}>
         <Text style={styles.title}>Dashboard</Text>
 
         <DashScreenform navigation={this.props.navigation} />
@@ -28,7 +24,8 @@ export default class DashScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2c3e50"
+    backgroundColor: "#2c3e50",
+    padding: 10
   },
   title: {
     color: "black",

@@ -16,11 +16,19 @@ export default class DashScreenform extends Component {
     ]
   };
   addprod = () => {
-    this.props.navigation.navigate("Add");
+    this.props.navigation.navigate("Add", {
+      update: this.updateprod
+    });
   };
   upgradeprod = () => {
     this.props.navigation.navigate("Upgrade");
   };
+  updateprod = (name, lifespan, price) => {
+    this.setState({
+      devices: [...this.state.devices, { name, lifespan, price }]
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -33,14 +41,6 @@ export default class DashScreenform extends Component {
             {device.price}
           </Text>
         ))}
-        <Text style={styles.welcome}>
-          Product 2{"\n"}
-          When device was bought{"\n"}price it was bought for
-        </Text>
-        <Text style={styles.welcome}>
-          Product 3{"\n"}
-          When device was bought{"\n"}price it was bought for
-        </Text>
         <TouchableOpacity style={styles.buttonContainer} onPress={this.addprod}>
           <Text style={styles.buttonText}>Add a Product</Text>
         </TouchableOpacity>
@@ -67,7 +67,9 @@ const styles = StyleSheet.create({
     margin: 10,
     textAlign: "center",
     fontSize: 20,
-    paddingTop: 70
+    paddingTop: 10,
+    justifyContent: "center",
+    alignItems: "center"
   },
   buttonContainer: {
     backgroundColor: "#2980b9",

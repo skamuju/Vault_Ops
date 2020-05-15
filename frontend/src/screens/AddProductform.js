@@ -15,6 +15,11 @@ export default class AppProductform extends Component {
     pricebought: ""
   };
   dashnav = () => {
+    this.props.route.params.update(
+      this.state.devicename,
+      this.state.devicebought,
+      this.state.pricebought
+    );
     this.props.navigation.navigate("Dash");
   };
   render() {

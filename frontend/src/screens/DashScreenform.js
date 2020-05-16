@@ -28,7 +28,14 @@ export default class DashScreenform extends Component {
       devices: [...this.state.devices, { name, lifespan, price }]
     });
   };
-
+  componentDidMount() {
+    this.getProducts();
+  }
+  getProducts = () => {
+    fetch("http://10.0.0.16:5000/getProduct", {
+      method: "GET"
+    }).then(res => console.warn(res));
+  };
   render() {
     return (
       <View style={styles.container}>

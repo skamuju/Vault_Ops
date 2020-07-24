@@ -26,7 +26,6 @@ def login():
     post = {'username': data["username"],'password': data["password"]}
     if collection.find_one(post): 
         return jsonify({"success": True})
-        collection.update_one({"traffic": 1}, {set: {"traffic": 2}})
     else:
         return jsonify({"success": False})
 
